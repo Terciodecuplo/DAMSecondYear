@@ -12,19 +12,28 @@ fun main() {
 fun executeOption(userSelection: Int, companyEmployees: ArrayList<Trabajador>) {
 
     when (userSelection) {
-        1 ->
-            companyEmployees.add(addNewWorker(companyEmployees))
-
-
+        1 -> companyEmployees.add(addNewWorker(companyEmployees))
         2 -> listWorkers(companyEmployees)
+        3 -> listSpecificWorker(companyEmployees)
+    }
+}
+
+fun listSpecificWorker(companyEmployees: ArrayList<Trabajador>) {
+    print("Specify the worker DNI: ")
+    var dniToFind = readln()
+    for(item in companyEmployees){
+        if(dniToFind == item.getDNI()){
+            item.mostrarDatos()
+        }
     }
 }
 
 fun listWorkers(companyEmployees: ArrayList<Trabajador>) {
     var typeOfWorker: Int = askTypeOfWorker()
     when (typeOfWorker) {
-        1 -> companyEmployees.filterIsInstance<Jefe>().forEach { employee:Jefe->employee.mostrarDatos() }
-        2 -> companyEmployees.filterIsInstance<Asalariado>().forEach { employee:Asalariado->employee.mostrarDatos() }
+        1 -> companyEmployees.filterIsInstance<Jefe>().forEach { employee: Jefe -> employee.mostrarDatos() }
+        2 -> companyEmployees.filterIsInstance<Asalariado>().forEach { employee: Asalariado -> employee.mostrarDatos() }
+        3 -> companyEmployees.filterIsInstance<Autonomo>().forEach { employee: Autonomo -> employee.mostrarDatos() }
     }
 
 

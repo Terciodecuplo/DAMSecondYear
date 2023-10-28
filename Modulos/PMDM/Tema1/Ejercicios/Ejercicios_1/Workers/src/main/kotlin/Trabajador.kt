@@ -9,9 +9,9 @@ abstract class Trabajador(private var nombre: String, private var apellido: Stri
         return this.nombre
     }
     fun getApellido() : String{
-        return this.nombre
+        return this.apellido
     }
     fun getDNI() : String{
-        return this.nombre
+        return this.dni
     }
 }
