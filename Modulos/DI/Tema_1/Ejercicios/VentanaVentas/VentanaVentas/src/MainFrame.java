@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 572, 278);
 		contentPane = new JPanel();
-		contentPane.setBorder(new LineBorder(new Color(150, 154, 152)));
+		contentPane.setBorder(new LineBorder(new Color(150, 154, 152), 4, true));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -59,6 +59,7 @@ public class MainFrame extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBuscar.setBounds(342, 166, 117, 41);
 		contentPane.add(btnBuscar);
 	}
