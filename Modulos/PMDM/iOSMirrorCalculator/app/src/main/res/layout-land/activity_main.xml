@@ -310,7 +310,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/signBtn"
+            android:id="@+id/sixNumberBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
