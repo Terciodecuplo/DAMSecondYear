@@ -184,7 +184,7 @@
             android:textSize="30dp" />
 
         <Button
-            android:id="@+id/additionBtn"
+            android:id="@+id/sumBtn"
             android:layout_height="100dp"
             android:layout_margin="5dp"
             android:backgroundTint="@color/orange"

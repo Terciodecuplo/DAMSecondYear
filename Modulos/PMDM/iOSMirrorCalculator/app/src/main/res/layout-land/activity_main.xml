@@ -128,7 +128,7 @@
             android:backgroundTint="@color/orange"
             android:text="/"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp" />
     </TableRow>
 
@@ -229,7 +229,7 @@
             android:backgroundTint="@color/orange"
             android:text="X"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp" />
     </TableRow>
 
@@ -330,7 +330,7 @@
             android:backgroundTint="@color/orange"
             android:text="-"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp" />
     </TableRow>
 
@@ -423,7 +423,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/additionBtn"
+            android:id="@+id/sumBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -431,7 +431,7 @@
             android:backgroundTint="@color/orange"
             android:text="+"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp" />
     </TableRow>
 
@@ -533,7 +533,7 @@
             android:backgroundTint="@color/orange"
             android:text="="
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp" />
     </TableRow>
 
