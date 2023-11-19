@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/history_text"
             android:layout_span="10"
-            android:text="Operations"
+            android:text=""
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="30sp" />
@@ -36,25 +36,37 @@
         android:layout_weight="1">
 
         <Button
-            android:id="@+id/parenthesisOpenBtn"
+            android:id="@+id/randomBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:backgroundTint="@color/medium_grey"
-            android:text="("
+            android:text="Rnd"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/parenthesisClosedBtn"
+            android:id="@+id/eBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:backgroundTint="@color/medium_grey"
-            android:text=")"
+            android:text="e"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/factorialBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/medium_grey"
+            android:text="x!"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="15sp" />
@@ -65,23 +77,11 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/delete_icon_white"
+            android:paddingLeft="25dp"
             android:backgroundTint="@color/medium_grey"
-            android:text="DEL"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/cBtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/medium_grey"
-            android:text="C"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
+             />
 
         <Button
             android:id="@+id/acBtn"
@@ -513,13 +513,13 @@
 
 
         <Button
-            android:id="@+id/ansBtn"
+            android:id="@+id/memoryBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:backgroundTint="@color/dark_grey"
-            android:text="ANS"
+            android:text="M+"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="15sp" />
