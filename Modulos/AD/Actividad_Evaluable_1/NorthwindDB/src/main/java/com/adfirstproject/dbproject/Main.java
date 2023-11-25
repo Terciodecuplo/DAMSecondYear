@@ -1,11 +1,11 @@
 package com.adfirstproject.dbproject;
 
 import com.adfirstproject.util.JsonURLRetrieve;
-import com.adfirstproject.util.ParseJsonToString;
+import com.adfirstproject.util.RetrievedJsonToObject;
 
 public class Main {
     JsonURLRetrieve jsonURLRetrieve = new JsonURLRetrieve();
-    ParseJsonToString parseJsonToString = new ParseJsonToString(jsonURLRetrieve);
+    RetrievedJsonToObject retrievedJsonToObject = new RetrievedJsonToObject(jsonURLRetrieve);
 
 
     public static void main(String[] args) {
@@ -14,6 +14,8 @@ public class Main {
     }
 
     private void runProgram() {
-        System.out.println(parseJsonToString.getJsonParsed());
+        retrievedJsonToObject.productListContainer(retrievedJsonToObject.parseJsonToStringBuffer());
     }
+
+
 }
