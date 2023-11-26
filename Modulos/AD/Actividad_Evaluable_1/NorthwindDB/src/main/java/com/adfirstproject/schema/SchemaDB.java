@@ -12,5 +12,9 @@ public interface SchemaDB {
     String COL_DESCRIPTION = "description";
     String COL_STOCK = "quantity";
     String COL_PRICE = "price";
+    String DB_TABLE_EMPLOYEES = "employees";
+    String COL_SURNAME = "surname";
+    String COL_EMAIL = "email";
+
 
 }

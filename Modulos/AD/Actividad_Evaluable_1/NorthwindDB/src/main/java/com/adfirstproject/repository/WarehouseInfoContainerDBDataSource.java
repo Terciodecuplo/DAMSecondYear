@@ -64,7 +64,7 @@ public class WarehouseInfoContainerDBDataSource implements WarehouseWritableData
                         stock,
                         price
                 );
-                 productList.add(product);
+                productList.add(product);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -73,7 +73,59 @@ public class WarehouseInfoContainerDBDataSource implements WarehouseWritableData
     }
 
     @Override
-    public void saveEmployeeInDataSource(EmployeesInfoContainer employee) {
+    public void addNewEmployee(EmployeesInfoContainer employee) {
+        try {
+            preparedStatement = connection.prepareStatement(String.format("INSERT INTO %s (%s,%s,%s)" +
+                            "VALUE (?,?,?)", SchemaDB.DB_TABLE_EMPLOYEES,
+                    SchemaDB.COL_NAME,
+                    SchemaDB.COL_SURNAME,
+                    SchemaDB.COL_EMAIL));
+            preparedStatement.setString(1, employee.getName());
+            preparedStatement.setString(2, employee.getSurname());
+            preparedStatement.setString(3, employee.getEmail());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    @Override
+    public void populateTableProducts(List<ProductInfoContainer> productList) {
+        try {
+            preparedStatement = connection.prepareStatement(String.format("INSERT INTO %s (%s,%s,%s,%s)" +
+                            "VALUE (?,?,?,?)", SchemaDB.DB_TABLE_PRODUCTS,
+                    SchemaDB.COL_NAME,
+                    SchemaDB.COL_DESCRIPTION,
+                    SchemaDB.COL_STOCK,
+                    SchemaDB.COL_PRICE));
+            for (ProductInfoContainer product : productList) {
+                preparedStatement.setString(1, product.getName());
+                preparedStatement.setString(2, product.getDescription());
+                preparedStatement.setInt(3, product.getQuantity());
+                preparedStatement.setDouble(4, product.getPrice());
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void addNewProduct(ProductInfoContainer product) {
+        try {
+            preparedStatement = connection.prepareStatement(String.format("INSERT INTO %s (%s,%s,%s,%s)" +
+                            "VALUE (?,?,?,?)", SchemaDB.DB_TABLE_PRODUCTS,
+                    SchemaDB.COL_NAME,
+                    SchemaDB.COL_DESCRIPTION,
+                    SchemaDB.COL_STOCK,
+                    SchemaDB.COL_PRICE));
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getDescription());
+            preparedStatement.setInt(3, product.getQuantity());
+            preparedStatement.setDouble(4, product.getPrice());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

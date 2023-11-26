@@ -1,5 +1,6 @@
 package com.adfirstproject.repository;
 
+import com.adfirstproject.models.EmployeesInfoContainer;
 import com.adfirstproject.models.ProductInfoContainer;
 
 import java.util.List;
@@ -19,5 +20,17 @@ public class WarehouseRepository {
 
     public List<ProductInfoContainer> getAllProducts() {
         return slowDataSource.getAllProducts();
+    }
+
+    public void populateTableProduct(List<ProductInfoContainer> productInfoContainerList){
+        slowDataSource.populateTableProducts(productInfoContainerList);
+    }
+
+    public void addNewProduct(ProductInfoContainer product){
+        slowDataSource.addNewProduct(product);
+    }
+
+    public void addNewEmployee(EmployeesInfoContainer employee){
+        slowDataSource.addNewEmployee(employee);
     }
 }

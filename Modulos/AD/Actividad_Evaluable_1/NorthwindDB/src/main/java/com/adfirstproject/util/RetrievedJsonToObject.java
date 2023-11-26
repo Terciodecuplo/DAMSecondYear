@@ -17,7 +17,7 @@ public class RetrievedJsonToObject {
         this.jsonRetrieved = jsonRetrieved;
     }
 
-    public void productListGenerator(String string) {
+    public List<ProductInfoContainer> productListGenerator(String string) {
         JSONObject response = new JSONObject(string);
         JSONArray products = response.getJSONArray("products");
         List<ProductInfoContainer> productList = new ArrayList<>();
@@ -37,6 +37,7 @@ public class RetrievedJsonToObject {
             );
             productList.add(productInfoContainer);
         }
+        return productList;
     }
 
     public String parseJsonToStringBuffer() {
