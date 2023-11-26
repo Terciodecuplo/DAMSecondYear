@@ -1,10 +1,12 @@
 package com.adfirstproject.util;
 
-import com.adfirstproject.models.Products;
+import com.adfirstproject.models.ProductInfoContainer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RetrievedJsonToObject {
     private StringBuffer stringBuffer = new StringBuffer();
@@ -15,12 +17,26 @@ public class RetrievedJsonToObject {
         this.jsonRetrieved = jsonRetrieved;
     }
 
-    public void productListContainer(String string) {
+    public void productListGenerator(String string) {
         JSONObject response = new JSONObject(string);
         JSONArray products = response.getJSONArray("products");
-        JSONObject product = products.getJSONObject(0);
-        String productName = product.getString("title");
-        System.out.println(productName);
+        List<ProductInfoContainer> productList = new ArrayList<>();
+        for (int i = 0; i<products.length();i++) {
+            JSONObject product = products.getJSONObject(i);
+            int productId = product.getInt("id");
+            String productName = product.getString("title");
+            String productDescription = product.getString("description");
+            int productQty = product.getInt("stock");
+            double productPrice = product.getDouble("price");
+            ProductInfoContainer productInfoContainer = new ProductInfoContainer(
+                    productId,
+                    productName,
+                    productDescription,
+                    productQty,
+                    productPrice
+            );
+            productList.add(productInfoContainer);
+        }
     }
 
     public String parseJsonToStringBuffer() {

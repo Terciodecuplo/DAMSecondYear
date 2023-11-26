@@ -1,20 +1,20 @@
 package com.adfirstproject.models;
 
-public class Products {
+public class ProductInfoContainer {
     private int id;
     private String name;
     private String description;
     private int quantity;
     private double price;
 
-    public Products(String name, String description, int quantity, double price) {
+    public ProductInfoContainer(String name, String description, int quantity, double price) {
         this.name = name;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public Products(int id, String name, String description, int quantity, double price) {
+    public ProductInfoContainer(int id, String name, String description, int quantity, double price) {
         this.id = id;
         this.name = name;
         this.description = description;
