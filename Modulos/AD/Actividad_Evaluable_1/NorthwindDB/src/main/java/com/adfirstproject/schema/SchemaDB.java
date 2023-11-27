@@ -15,6 +15,11 @@ public interface SchemaDB {
     String DB_TABLE_EMPLOYEES = "employees";
     String COL_SURNAME = "surname";
     String COL_EMAIL = "email";
+    String DB_TABLE_ORDERS = "orders";
+    String COL_ID_PRODUCTS = "id_product";
+    String COL_TOTAL_COST= "total_cost";
+    String DB_TABLE_FAV_PRODUCTS = "fav_products";
+
 
 
 }

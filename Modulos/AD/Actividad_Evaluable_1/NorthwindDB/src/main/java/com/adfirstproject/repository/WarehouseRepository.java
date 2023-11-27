@@ -1,6 +1,7 @@
 package com.adfirstproject.repository;
 
 import com.adfirstproject.models.EmployeesInfoContainer;
+import com.adfirstproject.models.OrderInfoContainer;
 import com.adfirstproject.models.ProductInfoContainer;
 
 import java.util.List;
@@ -21,6 +22,9 @@ public class WarehouseRepository {
     public List<ProductInfoContainer> getAllProducts() {
         return slowDataSource.getAllProducts();
     }
+    public List<ProductInfoContainer> getAllProducts(double maxProductPrice) {
+        return slowDataSource.getAllProducts(maxProductPrice);
+    }
 
     public void populateTableProduct(List<ProductInfoContainer> productInfoContainerList){
         slowDataSource.populateTableProducts(productInfoContainerList);
@@ -32,5 +36,25 @@ public class WarehouseRepository {
 
     public void addNewEmployee(EmployeesInfoContainer employee){
         slowDataSource.addNewEmployee(employee);
+    }
+
+    public List<EmployeesInfoContainer> getAllEmployees() {
+        return slowDataSource.getAllEmployees();
+    }
+
+    public void addNewOrder(OrderInfoContainer order) {
+        slowDataSource.addNewOrder(order);
+    }
+
+    public ProductInfoContainer getSingleProduct(int idProductToRetrieve){
+        return slowDataSource.getSingleProduct(idProductToRetrieve);
+    }
+
+    public  List<OrderInfoContainer> getAllOrders(){
+        return slowDataSource.getAllOrders();
+    }
+
+    public void addProductToFavList(double minProductPrice){
+        slowDataSource.addNewProductToFavList(minProductPrice);
     }
 }
