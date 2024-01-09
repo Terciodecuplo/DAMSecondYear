@@ -29,33 +29,23 @@ public class Bebedero extends Thread {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Bebedero dogA = new Bebedero("Sputnik");
-        Bebedero dogB = new Bebedero("Layka");
-        Bebedero dogC = new Bebedero("Apolo");
-        Bebedero dogD = new Bebedero("Soyuz");
-        Bebedero dogE = new Bebedero("Falcon");
-        Bebedero dogF = new Bebedero("Artemis");
-        Bebedero dogG = new Bebedero("Gagarin");
-        Bebedero dogH = new Bebedero("Miura");
-        Bebedero dogI = new Bebedero("Duque");
-        dogA.start();
-        dogB.start();
-        dogC.start();
-        dogD.start();
-        dogE.start();
-        dogF.start();
-        dogG.start();
-        dogH.start();
-        dogI.start();
-        dogA.join();
-        dogB.join();
-        dogC.join();
-        dogD.join();
-        dogE.join();
-        dogF.join();
-        dogG.join();
-        dogH.join();
-        dogI.join();
+        Bebedero[] bebederos = new Bebedero[]{
+                new Bebedero("Sputnik"),
+                new Bebedero("Layka"),
+                new Bebedero("Apolo"),
+                new Bebedero("Soyuz"),
+                new Bebedero("Falcon"),
+                new Bebedero("Artemis"),
+                new Bebedero("Gagarin"),
+                new Bebedero("Miura"),
+                new Bebedero("Duque"),
+        };
+        for (Bebedero dog : bebederos) {
+            dog.start();
+        }
+        for (Bebedero dog : bebederos) {
+            dog.join();
+        }
         System.out.printf("The total water consumption by the dogs has been %d liters.", Bebedero.totalWaterConsumption);
     }
 }
