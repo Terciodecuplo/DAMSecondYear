@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Listados</string>
+    <string name="login_incomplete_msg">Data Login Incomplete</string>
+    <string name="login_correct_msg">Credentials Accepted</string>
+    <string name="login_incorrect_msg">Incorrect Credentials</string>
+    <string-array name="profiles">
+        <item>Admin</item>
+        <item>User</item>
+        <item>Guest</item>
+    </string-array>
+</resources>
