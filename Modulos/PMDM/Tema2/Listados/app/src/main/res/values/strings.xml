@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Listados</string>
+    <string name="userName">Name</string>
     <string name="login_incomplete_msg">Data Login Incomplete</string>
     <string name="login_correct_msg">Credentials Accepted</string>
     <string name="login_incorrect_msg">Incorrect Credentials</string>
@@ -7,5 +8,10 @@
         <item>Admin</item>
         <item>User</item>
         <item>Guest</item>
+    </string-array>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Non-Binary</item>
     </string-array>
 </resources>

@@ -1,12 +1,13 @@
 package com.example.listados
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.listados.databinding.ActivityMainBinding
+import com.example.listados.model.User
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), OnClickListener {
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                     val userRole = binding.itemList.selectedItem.toString()
                     val userStateLogin =
                         findViewById<RadioButton>(binding.stateGroup.checkedRadioButtonId).text.toString()
-                    if(userMail.equals("jose@gmail.com") &&
+                    if(userMail.equals("jose") &&
                         userPassword.equals("1234") &&
                         !userStateLogin.equals("")){
                         Snackbar.make(
@@ -44,6 +45,9 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                             resources.getString(R.string.login_correct_msg),
                             Snackbar.LENGTH_SHORT
                         ).show()
+                        val intent = Intent(applicationContext,SecondActivity::class.java)
+                        intent.putExtra("usuario", User(userMail,userPassword,userRole,userStateLogin))
+                        this.startActivity(intent)
                     } else {
                         Snackbar.make(
                             binding.root,
