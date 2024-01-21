@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.SimpleAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.listados.adapter.UsersAdapter
 import com.example.listados.databinding.ActivitySecondBinding
 import com.example.listados.model.Contact
@@ -18,6 +21,7 @@ class SecondActivity : AppCompatActivity() {
     private lateinit var restoredFromPreviousScreen: User
     private lateinit var usersAdapter: UsersAdapter
     private lateinit var userList: ArrayList<Contact>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
@@ -65,6 +69,20 @@ class SecondActivity : AppCompatActivity() {
         binding.usersRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         // parte datos -> adapter RecyclerView.Adapter<ViewHolder> (el patrón de representación de los datos)
 
+        binding.createBtn.setOnClickListener{
+            usersAdapter.addContact(Contact("contacto", "contactisimo", "12345567", R.drawable.user_image))
+        }
 
+        // Enlaza el recycleView a swipeToDelete para que se ejecute la funcionalidad
+        binding.usersRecycler.layoutManager = LinearLayoutManager(this)
+
+        val swipeHandler = object : SwipeToDeleteCallback(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = binding.usersRecycler.adapter as UsersAdapter
+                adapter.removeAt(viewHolder.adapterPosition)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(binding.usersRecycler)
     }
 }

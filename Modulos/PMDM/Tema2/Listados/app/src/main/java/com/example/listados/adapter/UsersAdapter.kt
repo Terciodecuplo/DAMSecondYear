@@ -16,9 +16,10 @@ class UsersAdapter(var userList: ArrayList<Contact>, var context: Context) :
     RecyclerView.Adapter<UsersAdapter.MyHolder>() {
 
     class MyHolder(item: View) : ViewHolder(item) {
-        // estructura base del recycler view, template de la fila
-        // la vista (view) hace referencia al item_recycler.xml
-        // cada variable hace referencia a cada uno de los elementos que mostrarán datos en item_recycler
+        /* estructura base del recycler view, template de la fila
+         * la vista (view) hace referencia al item_recycler.xml
+         * cada variable hace referencia a cada uno de los elementos que mostrarán datos en item_recycler
+         */
         var imageArea: ImageView
         var nameArea: TextView
 
@@ -55,5 +56,16 @@ class UsersAdapter(var userList: ArrayList<Contact>, var context: Context) :
         var user = userList[position]
         holder.imageArea.setImageResource(user.image)
         holder.nameArea.text = user.name
+    }
+
+    // permite añadir un
+    fun addContact(contact:Contact){
+        this.userList.add(contact)
+        notifyItemInserted(userList.size-1)
+    }
+
+    fun removeAt(position: Int){
+        this.userList.removeAt(position)
+        notifyItemRemoved(position)
     }
 }
