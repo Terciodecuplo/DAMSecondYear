@@ -6,25 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
 
-    <ImageButton
-        android:id="@+id/logout_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/log_out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:text="@string/userName"
-        app:layout_constraintBottom_toBottomOf="@+id/logout_btn"
-        app:layout_constraintEnd_toStartOf="@+id/logout_btn"
-        app:layout_constraintTop_toTopOf="@+id/logout_btn" />
+        android:background="@color/toolbar_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/gender_filter"
@@ -34,7 +23,7 @@
         android:entries="@array/genders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Button
         android:id="@+id/filter_btn"

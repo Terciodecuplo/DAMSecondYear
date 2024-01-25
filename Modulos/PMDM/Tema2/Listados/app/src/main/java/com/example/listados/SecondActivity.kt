@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.SimpleAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,8 @@ import com.example.listados.model.Contact
 import com.example.listados.model.User
 import com.google.android.material.snackbar.Snackbar
 
-class SecondActivity : AppCompatActivity() {
+// TODO: PASO 5 -> Implemento la interfaz en el destino de la comunicación
+class SecondActivity : AppCompatActivity(), UsersAdapter.OnUserRecyclerListener {
 
     private lateinit var binding: ActivitySecondBinding
     private lateinit var restoredFromPreviousScreen: User
@@ -38,14 +38,11 @@ class SecondActivity : AppCompatActivity() {
             la clase SecondActivity. Podría usarse "applicationContext" pero dado que se usa una
             interfaz de callback, applicationContext no nos permitiría usarla.
          */
-        usersAdapter = UsersAdapter(userList,this)
+        usersAdapter = UsersAdapter(userList, this)
 
         // se usa el método getSerializable aunque esté deprecated
         restoredFromPreviousScreen = intent.extras?.getSerializable("usuario") as User
-        binding.userName.text = restoredFromPreviousScreen.name
-        binding.logoutBtn.setOnClickListener {
-            finish()
-        }
+
         binding.genderFilter.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -66,13 +63,20 @@ class SecondActivity : AppCompatActivity() {
         // parte gráfica -> XML
         binding.usersRecycler.adapter = usersAdapter
         // indica cómo se comporta el recyclerView, en este caso, se comporte linealmente vertical
-        binding.usersRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        binding.usersRecycler.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         // parte datos -> adapter RecyclerView.Adapter<ViewHolder> (el patrón de representación de los datos)
 
-        binding.createBtn.setOnClickListener{
-            usersAdapter.addContact(Contact("contacto", "contactisimo", "12345567", R.drawable.user_image))
+        binding.createBtn.setOnClickListener {
+            usersAdapter.addContact(
+                Contact(
+                    "contacto",
+                    "contactisimo",
+                    "12345567",
+                    R.drawable.user_image
+                )
+            )
         }
-
         // Enlaza el recycleView a swipeToDelete para que se ejecute la funcionalidad
         binding.usersRecycler.layoutManager = LinearLayoutManager(this)
 
@@ -84,5 +88,12 @@ class SecondActivity : AppCompatActivity() {
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(binding.usersRecycler)
+    }
+
+    override fun onUserSelected(contact: Contact) {
+        Snackbar.make(
+            binding.root, "Contacto recibido con nombre ${contact.name}",
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 }
