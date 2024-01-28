@@ -1,6 +1,8 @@
 package com.example.listados
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -27,6 +29,8 @@ class SecondActivity : AppCompatActivity(), UsersAdapter.OnUserRecyclerListener 
         setContentView(R.layout.activity_second)
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // Indica que el toolbar actúe como actionbar. NECESARIO que el toolbar sea de androidx...Toolbar
+        setSupportActionBar(binding.toolbar)
         // Esta lista se generaría de otra forma, esto es una prueba. Si no se notifican los cambios
         // se tiene que crear la lista ANTES de instanciar el usersAdapter
         userList = ArrayList()
@@ -42,6 +46,7 @@ class SecondActivity : AppCompatActivity(), UsersAdapter.OnUserRecyclerListener 
 
         // se usa el método getSerializable aunque esté deprecated
         restoredFromPreviousScreen = intent.extras?.getSerializable("usuario") as User
+        supportActionBar!!.title = "Welcome ${restoredFromPreviousScreen.name}"
 
         binding.genderFilter.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(
@@ -67,16 +72,6 @@ class SecondActivity : AppCompatActivity(), UsersAdapter.OnUserRecyclerListener 
             LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         // parte datos -> adapter RecyclerView.Adapter<ViewHolder> (el patrón de representación de los datos)
 
-        binding.createBtn.setOnClickListener {
-            usersAdapter.addContact(
-                Contact(
-                    "contacto",
-                    "contactisimo",
-                    "12345567",
-                    R.drawable.user_image
-                )
-            )
-        }
         // Enlaza el recycleView a swipeToDelete para que se ejecute la funcionalidad
         binding.usersRecycler.layoutManager = LinearLayoutManager(this)
 
@@ -96,4 +91,31 @@ class SecondActivity : AppCompatActivity(), UsersAdapter.OnUserRecyclerListener 
             Snackbar.LENGTH_SHORT
         ).show()
     }
+
+    // Posiciona en la pantalla arriba a la derecha el menú creado
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.createuser_menu -> {
+                usersAdapter.addContact(
+                    Contact(
+                        "contacto",
+                        "contactisimo",
+                        "12345567",
+                        R.drawable.user_image
+                    )
+                )
+            }
+            R.id.filter_menu -> {}
+            R.id.logout_menu -> {
+                finish()
+            }
+        }
+        return true
+    }
+
 }
