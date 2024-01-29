@@ -104,6 +104,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         binding.acBtn.text = savedInstanceState?.getCharSequence("acButtonState") ?: "AC"
         binding.resultText.text = savedInstanceState?.getCharSequence("result") ?: "0"
+        operationSelected = savedInstanceState?.getString("operationSelected") ?: ""
+        lastOperationSelected = savedInstanceState?.getString("lastOperationSelected") ?: ""
 
         allButtonsBinds.forEach { button -> button?.setOnClickListener(this) }
 
@@ -553,76 +555,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         return factorialResult * factorialNumber
     }
 
-    /*private fun historyDisplayManager(charToPrint: String) {
-        val regex = "[+\\-/x]".toRegex()
-        if (binding.historyText.text == "" && !charToPrint.contains("=") && charToPrint != "ngtv") {
-            binding.historyText.text = charToPrint
-        } else if (binding.historyText.text == "" && binding.resultText.text == "0" && charToPrint.contains(
-                "="
-            )
-        ) {
-            binding.historyText.text = ""
-        } else if (regex.containsMatchIn(
-                binding.historyText.text.lastOrNull().toString()
-            ) && regex.containsMatchIn(charToPrint)
-        ) {
-            binding.historyText.text = binding.historyText.text.toString().dropLast(1)
-            binding.historyText.append(charToPrint)
-        } else if (charToPrint == "ngtv") {
-            for (i in binding.historyText.length() - 1 downTo 0) {
-                if (binding.historyText.length() == 1) {
-                    binding.historyText.text = "-${binding.historyText.text}"
-                    if (binding.historyText.text.toString() == "-0") {
-                        binding.historyText.text = "0"
-                    }
-                    break
-                } else if (binding.historyText.text[i - 1].toString() == "=" && regex.containsMatchIn(
-                        binding.historyText.text[i].toString()
-                    )
-                ) {
-                    break
-                } else if (regex.containsMatchIn(binding.historyText.text[i].toString())) {
-                    var firstSubStr = binding.historyText.text.subSequence(0, i + 1)
-                    var secondSubStr =
-                        binding.historyText.text.subSequence(i + 1, binding.historyText.length())
-                    if (firstSubStr[firstSubStr.length - 1].toString() == "-") {
-                        firstSubStr = firstSubStr.dropLast(1)
-                        binding.historyText.text = "$firstSubStr$secondSubStr"
-                    } else {
-                        binding.historyText.text = "$firstSubStr-$secondSubStr"
-                    }
-                    break
-                }
-            }
-        } else if (charToPrint == "%") {
-            for (i in binding.historyText.length() - 1 downTo 0) {
-                if (regex.containsMatchIn(binding.historyText.text[i].toString())) {
-                    if(binding.historyText.text[i-1].toString() == "E"){
-                        var stringCleaned = binding.historyText.text.dropLast(i-1)
-                        for(i in binding.resultText.length()-1 downTo 0) {
-                            if(binding.resultText.text[i].toString() == "E"){
-                                var exponentPartOfResult = binding.resultText.text.substring(i,binding.resultText.length()-1)
-                                binding.historyText.text = "$stringCleaned$exponentPartOfResult"
-                                break
-                            }
-                        }
 
-                    } else {
-                        binding.historyText.text =
-                            binding.historyText.text.dropLast(binding.historyText.length() - i - 2)
-                        binding.historyText.append(binding.resultText.text)
-                        break
-                    }
-                } else if (!regex.containsMatchIn(binding.historyText.text[i].toString()) && i == 0) {
-                    binding.historyText.text = binding.resultText.text
-                    break
-                }
-
-            }
-        } else {
-            binding.historyText.append(charToPrint)
-        }
-    }*/
 
     private fun changeOperationSelectedColour(button: Button) {
         button.setBackgroundColor(ContextCompat.getColor(this, R.color.white))

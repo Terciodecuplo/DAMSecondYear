@@ -10,7 +10,6 @@ public interface WarehouseWritableDataSource extends WarehouseReadableDataSource
     void addNewEmployee(EmployeesInfoContainer employee);
     void populateTableProducts(List<ProductInfoContainer> productList);
     void addNewProduct(ProductInfoContainer product);
-
     void addNewOrder(OrderInfoContainer order);
     void addNewProductToFavList(double minProductPrice);
 }
